@@ -8,6 +8,7 @@ import logging
 import urllib.parse
 import uuid
 from collections import namedtuple
+from urllib.parse import urljoin
 
 from django.conf import settings
 from django.contrib import messages
@@ -187,6 +188,8 @@ def compose_activation_email(user, user_registration=None, route_enabled=False, 
         'routed_user': user.username,
         'routed_user_email': user.email,
         'routed_profile_name': profile_name,
+        'marketing_url': settings.MKTG_URLS.get('ROOT'),
+        'marketing_search_url': urljoin(settings.MKTG_URLS.get('ROOT'), '/search'),
     })
 
     if route_enabled:
