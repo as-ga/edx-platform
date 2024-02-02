@@ -101,7 +101,7 @@ def send_notifications(user_ids, course_key: str, app_name, notification_type, c
         raise ValidationError(f"Notification is not valid {app_name} {notification_type} {context}")
 
     user_ids = list(set(user_ids))
-    batch_size = settings.NOTIFICATION_CREATION_BATCH_SIZE
+    batch_size = 99
 
     notifications_generated = False
     notification_content = ''
