@@ -415,7 +415,7 @@ def _accessible_courses_summary_iter(request, org=None):
         courses_summary = [] if org == '' else CourseOverview.get_all_courses(orgs=[org])
     else:
         courses_summary = modulestore().get_course_summaries()
-    courses_summary = list(filter(course_filter, courses_summary))
+    courses_summary = filter(course_filter, courses_summary)
     in_process_course_actions = get_in_process_course_actions(request)
     return courses_summary, in_process_course_actions
 
